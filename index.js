@@ -64,20 +64,20 @@ console.log(btnExpensesAddPlus);
 let budgetMonth = document.getElementsByClassName('budget_month-value')[0];
 console.log(budgetMonth);
 
-let budgetDay = document.getElementsByClassName('budget_day-value')[1];
+let budgetDay = document.getElementsByClassName('budget_day-value')[0];
 console.log(budgetDay);
 
-let expenseMonth = document.getElementsByClassName('expenses_month-value')[2];
+let expenseMonth = document.getElementsByClassName('expenses_month-value')[0];
 console.log(expenseMonth);
 
-let additionalIncome = document.getElementsByClassName('additional_income-value')[3];
+let additionalIncome = document.getElementsByClassName('additional_income-value')[0];
 console.log(additionalIncome);
 
-let additionalExpenses = document.getElementsByClassName('additional_expenses-value')[4];
+let additionalExpenses = document.getElementsByClassName('additional_expenses-value')[0];
 console.log(additionalExpenses);
 
-let incomePeriod = document.getElementsByClassName('income_period-value')[5];
+let incomePeriod = document.getElementsByClassName('income_period-value')[0];
 console.log(incomePeriod);
 
-let targetMonth = document.getElementsByClassName('target_month-value')[6];
+let targetMonth = document.getElementsByClassName('target_month-value')[0];
 console.log(targetMonth);
