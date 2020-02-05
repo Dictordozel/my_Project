@@ -1,5 +1,7 @@
 'use strict';
 
+
+
 let btnStartCalculate = document.getElementById('start');
 console.log(btnStartCalculate);
 
@@ -18,7 +20,7 @@ console.log(incomeAmount);
 
 //////   Возможный доход  //////
 
-let additionalIncomeItem = document.querySelectorAll('additional_income-item');
+let additionalIncomeItem = document.querySelectorAll('.additional_income-item');
 console.log(additionalIncomeItem);
 
 //////   Обязательные расходы  //////
@@ -59,23 +61,23 @@ console.log(btnExpensesAddPlus);
 
 ///////////////////////////////////////////////////////////////////////////////////////
 
-let budgetMonth = document.getElementsByClassName('budget_month-value');
+let budgetMonth = document.getElementsByClassName('budget_month-value')[0];
 console.log(budgetMonth);
 
-let budgetDay = document.getElementsByClassName('budget_day-value');
+let budgetDay = document.getElementsByClassName('budget_day-value')[1];
 console.log(budgetDay);
 
-let expenseMonth = document.getElementsByClassName('expenses_month-value');
+let expenseMonth = document.getElementsByClassName('expenses_month-value')[2];
 console.log(expenseMonth);
 
-let additionalIncome = document.getElementsByClassName('additional_income-value');
+let additionalIncome = document.getElementsByClassName('additional_income-value')[3];
 console.log(additionalIncome);
 
-let additionalExpenses = document.getElementsByClassName('additional_expenses-value');
+let additionalExpenses = document.getElementsByClassName('additional_expenses-value')[4];
 console.log(additionalExpenses);
 
-let incomePeriod = document.getElementsByClassName('income_period-value');
+let incomePeriod = document.getElementsByClassName('income_period-value')[5];
 console.log(incomePeriod);
 
-let targetMonth = document.getElementsByClassName('target_month-value');
+let targetMonth = document.getElementsByClassName('target_month-value')[6];
 console.log(targetMonth);
