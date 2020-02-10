@@ -263,7 +263,6 @@ let appData = {
         btnResetCalculate.style.display = 'none';
 
         let leftDataInputs = document.querySelector('.data').querySelectorAll('input[type="text"]');
-        console.log(leftDataInputs);
         leftDataInputs.forEach(function(item) {
         item.disabled = false;
         });
@@ -272,11 +271,16 @@ let appData = {
         allInputs.forEach(function(item){
         item.value = '';
         });
+
+        let btnPlus = document.querySelectorAll('.btn_plus');
+        btnPlus.forEach(function(item) {
+        item.disabled = false;
+        });
+
         periodSelect.value = '1';
         periodAmount.textContent = '1';
 
         
-
     }
 
 };
@@ -288,12 +292,8 @@ btnIncomeAddPlus.addEventListener('click', appData.addIncomeBlock);
 btnStartCalculate.addEventListener('click', appData.start.bind(appData));
 
 periodSelect.addEventListener('input', function() {
-    periodAmount.innerHTML = periodSelect.value;        
-    });
-
-
-    let depositCheck = document.querySelector('.deposit-checkmark');
-    console.log(depositCheck);
+periodAmount.innerHTML = periodSelect.value;        
+});
 
 
 
