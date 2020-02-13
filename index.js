@@ -57,9 +57,6 @@ this.expensesMonth = 0;
 };
 
 
-//const appData = new AppData();
-
-
 AppData.prototype.start = function() {
     btnStartCalculate.style.display = 'none';
     btnResetCalculate.style.display = 'block';
@@ -80,20 +77,20 @@ AppData.prototype.start = function() {
 };
 
 AppData.prototype.showResult = function() {
-    let _this = this;
     budgetMonthValue.value = this.budgetMonth;
     budgetDayValue.value = this.budgetDay;
     expenseMonthValue.value = this.expensesMonth;
     additionalExpensesValue.value = this.addExpenses.join(', ');
     additionalIncomeItem.value = this.addIncome.join(', ');
     targetMonthValue.value = this.getTargetMonth();
-    incomePeriodValue.value = _this.calcSavedMoney();
+    incomePeriodValue.value = this.calcSavedMoney();
     additionalIncomeValue.value = this.addIncome;
 
-    periodSelect.addEventListener('change', function() {
-    incomePeriodValue.value = _this.calcSavedMoney();
-    periodAmount.textContent = periodSelect.value;         
-    });
+    periodSelect.addEventListener('change', this.changePeriod.bind(this));
+};
+
+AppData.prototype.changePeriod = function() {
+   incomePeriodValue.value = this.calcSavedMoney();
 };
 
 AppData.prototype.addExpensesBlock = function() {
@@ -233,7 +230,19 @@ AppData.prototype.resetData = function() {
     periodAmount.textContent = '1';
     
     this.resetInputs('.income-items', '.income');
-    this.resetInputs('.expenses-items', '.expenses');    
+    this.resetInputs('.expenses-items', '.expenses');
+
+    this.income = {};
+    this.addIncome = [];
+    this.incomeMonth = 0;
+    this.expenses = {};
+    this.addExpenses = [];
+    checkBoxDeposit.checked = false;
+    this.percentDeposit = 0;
+    this.moneyDeposit = 0;
+    this.budgetDay = 0;
+    this.budgetMonth = 0;
+    this.expensesMonth = 0;
 };
 
 AppData.prototype.resetInputs = function(item, itemsParent) {
