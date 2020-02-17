@@ -256,10 +256,11 @@ changePercent() {
     const valueSelect = this.value;
     if(valueSelect === 'other') {
         depositPercent.style.display = 'inline-block';
-        depositPercent.addEventListener('change', () => {
+        depositPercent.addEventListener('input', () => {
             if(!isNumber(depositPercent.value) || depositPercent.value === '' || depositPercent.value <= 0 || depositPercent.value > 100 ) {
             btnStartCalculate.disabled = true;
             alert('Вы ввели некорректные данные! Введите еще раз!');
+            depositPercent.value = '';
             } else {
             btnStartCalculate.disabled = false;
             }
