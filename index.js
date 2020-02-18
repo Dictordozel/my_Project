@@ -65,6 +65,8 @@ start() {
     btnStartCalculate.style.display = 'none';
     btnResetCalculate.style.display = 'block';
     btnResetCalculate.addEventListener("click", this.resetData.bind(this));
+    checkBoxDeposit.disabled = true;
+    depositBank.disabled = true;
 
     this.budget = +budgetMonthInput.value;
 
@@ -198,6 +200,8 @@ resetData() {
     btnStartCalculate.style.display = 'block';
     btnResetCalculate.style.display = 'none';
     btnStartCalculate.disabled = true;
+    checkBoxDeposit.disabled = false;
+    depositBank.disabled = false;
 
     const leftDataInputs = document.querySelector('.data').querySelectorAll('input[type="text"]');
     leftDataInputs.forEach((item) => {
@@ -231,6 +235,8 @@ resetData() {
     this.budgetDay = 0;
     this.budgetMonth = 0;
     this.expensesMonth = 0;
+    this.deposit = false;
+    this.percentDeposit = 0;
 
     
     checkBoxDeposit.checked = false;
@@ -253,22 +259,13 @@ resetInputs(item, itemsParent) {
 
 
 changePercent() {
+    depositPercent.value = '';
     const valueSelect = this.value;
     if(valueSelect === 'other') {
         depositPercent.style.display = 'inline-block';
-        depositPercent.addEventListener('input', () => {
-            if(!isNumber(depositPercent.value) || depositPercent.value === '' || depositPercent.value <= 0 || depositPercent.value > 100 ) {
-            btnStartCalculate.disabled = true;
-            alert('Вы ввели некорректные данные! Введите еще раз!');
-            depositPercent.value = '';
-            } else {
-            btnStartCalculate.disabled = false;
-            }
-        });
-
     } else {
         depositPercent.value = valueSelect;
-        
+        depositPercent.style.display = 'none';
     }
 }
 
@@ -280,6 +277,7 @@ depositHandler() {
     this.deposit = true;
     depositBank.addEventListener('change', this.changePercent);
     } else {
+    depositPercent.style.display = 'none';
     depositBank.style.display = 'none';
     depositAmount.style.display = 'none';
     depositBank.value = ''; 
@@ -303,10 +301,25 @@ eventListeners() {
     btnExpensesAddPlus.addEventListener('click', this.addExpensesBlock);
     btnIncomeAddPlus.addEventListener('click', this.addIncomeBlock);                  
     periodSelect.addEventListener('input', () => {
-    periodAmount.textContent = periodSelect.value;  
+        periodAmount.textContent = periodSelect.value;  
     }); 
     
     checkBoxDeposit.addEventListener('change', this.depositHandler.bind(this));
+
+    depositPercent.addEventListener('input', () => {
+        if(!isNumber(depositPercent.value) || depositPercent.value.trim() === ''){
+            btnStartCalculate.disabled = true;
+            depositPercent.value = '';
+            alert('Вы ввели некорректные данные! Введите еще раз!');
+        } else {
+            btnStartCalculate.disabled = false;
+        }
+
+        if( depositPercent.value < 0 || depositPercent.value >= 100 ) {
+            alert('Введите данные в промежутке от 0 до 100');
+            depositPercent.value = '';
+        } 
+    });
 }
 
 }
